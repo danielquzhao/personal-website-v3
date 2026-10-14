@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Newsreader } from "next/font/google";
-import { site } from "@/content/data";
+import { Header } from "@/components/header";
+import { projects, site } from "@/content/data";
+import { getPosts } from "@/lib/writing";
+import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -28,8 +31,20 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>
+        <div className="shell">
+          <Header
+            site={site}
+            projects={projects.map(({ slug, title }) => ({ slug, title }))}
+            posts={getPosts().map(({ slug, title }) => ({ slug, title }))}
+          />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
