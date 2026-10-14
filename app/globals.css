@@ -151,26 +151,6 @@ em,
   color: var(--fg);
 }
 
-.nav-pill {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 7px;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--faint);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.2s ease;
-}
-
-.nav-pill[data-instant="true"] {
-  transition: opacity 0.2s ease;
-}
-
 kbd {
   display: inline-grid;
   place-items: center;
@@ -871,8 +851,7 @@ a:hover .arrow {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .zoom-image,
-  .nav-pill {
+  .zoom-image {
     transition: none;
   }
   .zoom-overlay,
