@@ -328,7 +328,7 @@ section {
   height: 84px;
   object-fit: contain;
   opacity: 0.16;
-  transform: translate(-50%, -50%) rotate(-12deg);
+  transform: translate(-50%, -50%);
   filter: grayscale(1) contrast(1.2);
 }
 
