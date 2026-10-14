@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
+import { ZoomImage } from "@/components/zoom-image";
 import { projects, type Block } from "@/content/data";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -65,10 +65,9 @@ export default async function ProjectPage({ params }: Params) {
       </dl>
 
       <div className="frame cover" data-animate style={delay(3)}>
-        <Image
+        <ZoomImage
           src={project.cover}
           alt={project.title}
-          placeholder="blur"
           priority
           sizes="(max-width: 640px) 100vw, 640px"
         />
@@ -102,12 +101,7 @@ function BlockView({ block }: { block: Block }) {
       return (
         <figure>
           <div className="frame">
-            <Image
-              src={block.src}
-              alt={block.alt}
-              placeholder="blur"
-              sizes="(max-width: 640px) 100vw, 640px"
-            />
+            <ZoomImage src={block.src} alt={block.alt} sizes="(max-width: 640px) 100vw, 640px" />
           </div>
         </figure>
       );
@@ -116,7 +110,7 @@ function BlockView({ block }: { block: Block }) {
         <div className="gallery">
           {block.images.map((img) => (
             <div key={img.alt} className="frame">
-              <Image src={img.src} alt={img.alt} placeholder="blur" sizes="320px" />
+              <ZoomImage src={img.src} alt={img.alt} sizes="320px" />
             </div>
           ))}
         </div>

@@ -3,7 +3,7 @@
 import { Command } from "cmdk";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { getTheme, setTheme, type Theme } from "@/lib/theme";
 import {
   BoxIcon,
@@ -47,6 +47,9 @@ export function Header({ site, projects, posts }: Props) {
   const [theme, setThemeState] = useState<Theme>("system");
   const [copied, setCopied] = useState(false);
   const [isMac, setIsMac] = useState(true);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const linkRefs = useRef(new Map<string, HTMLAnchorElement>());
+  const pillRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     setThemeState(getTheme());
@@ -86,6 +89,30 @@ export function Header({ site, projects, posts }: Props) {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
+  // A highlight that slides to the hovered link, resting on the current page's link otherwise.
+  const navPages = pages.slice(1);
+  const target = hovered ?? navPages.find((p) => isActive(p.href))?.href ?? null;
+
+  useLayoutEffect(() => {
+    const pill = pillRef.current;
+    if (!pill) return;
+    const place = () => {
+      const link = target ? linkRefs.current.get(target) : null;
+      if (!link) {
+        pill.style.opacity = "0";
+        return;
+      }
+      const wasHidden = pill.style.opacity !== "1";
+      pill.dataset.instant = String(wasHidden);
+      pill.style.width = `${link.offsetWidth}px`;
+      pill.style.transform = `translateX(${link.offsetLeft}px)`;
+      pill.style.opacity = "1";
+    };
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [target]);
+
   return (
     <>
       <header className="header">
@@ -93,11 +120,23 @@ export function Header({ site, projects, posts }: Props) {
           Daniel Zhao
         </Link>
         <nav className="header-nav">
-          {pages.slice(1).map((p) => (
-            <Link key={p.href} href={p.href} data-active={isActive(p.href)}>
-              {p.label.toLowerCase()}
-            </Link>
-          ))}
+          <span className="nav-links" onPointerLeave={() => setHovered(null)}>
+            <span ref={pillRef} className="nav-pill" aria-hidden />
+            {navPages.map((p) => (
+              <Link
+                key={p.href}
+                href={p.href}
+                data-active={isActive(p.href)}
+                onPointerEnter={() => setHovered(p.href)}
+                ref={(el) => {
+                  if (el) linkRefs.current.set(p.href, el);
+                  else linkRefs.current.delete(p.href);
+                }}
+              >
+                {p.label.toLowerCase()}
+              </Link>
+            ))}
+          </span>
           <button
             type="button"
             className="kbd-button"
