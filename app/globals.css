@@ -901,6 +901,27 @@ a:hover .arrow {
   }
 }
 
+/* Project preview → cover morph */
+::view-transition-group(.morph) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+/* Arriving via the morph, the cover is already in place, so skip its fade-in. */
+:root[data-morph] .cover[data-animate] {
+  animation: none;
+}
+
 /* Theme switch cross-fade */
 ::view-transition-old(root),
 ::view-transition-new(root) {

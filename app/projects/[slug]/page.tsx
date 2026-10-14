@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { Footer } from "@/components/footer";
 import { ZoomImage } from "@/components/zoom-image";
 import { projects, type Block } from "@/content/data";
@@ -64,14 +65,16 @@ export default async function ProjectPage({ params }: Params) {
         </div>
       </dl>
 
-      <div className="frame cover" data-animate style={delay(3)}>
-        <ZoomImage
-          src={project.cover}
-          alt={project.title}
-          priority
-          sizes="(max-width: 640px) 100vw, 640px"
-        />
-      </div>
+      <ViewTransition name={`cover-${project.slug}`} share="morph" default="none">
+        <div className="frame cover" data-animate style={delay(3)}>
+          <ZoomImage
+            src={project.cover}
+            alt={project.title}
+            priority
+            sizes="(max-width: 640px) 100vw, 640px"
+          />
+        </div>
+      </ViewTransition>
 
       <article className="prose" data-animate style={delay(4)}>
         {project.body.map((block, i) => (

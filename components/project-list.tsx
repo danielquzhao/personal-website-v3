@@ -2,9 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ViewTransition } from "react";
 import { createPortal } from "react-dom";
 import type { Project } from "@/content/data";
+
+function markMorph() {
+  const root = document.documentElement;
+  root.dataset.morph = "";
+  window.setTimeout(() => delete root.dataset.morph, 1200);
+}
 
 type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover" | "date">[] };
 
@@ -82,6 +88,10 @@ export function ProjectList({ projects }: Props) {
               href={`/projects/${p.slug}`}
               className="row"
               onPointerEnter={() => setActive(p.slug)}
+              onClick={() => {
+                // The preview morphs into the project's cover; let the cover skip its fade-in.
+                if (enabled && active === p.slug) markMorph();
+              }}
             >
               <span className="row-main">
                 <span className="row-title">{p.title}</span>
@@ -95,25 +105,32 @@ export function ProjectList({ projects }: Props) {
 
       {enabled &&
         createPortal(
-          <div
-            ref={previewRef}
-            className="preview"
-            data-show={active !== null}
-            aria-hidden
-            style={{ aspectRatio: "4 / 3" }}
+          // Named after the hovered project, so it pairs with that project's cover on navigation.
+          <ViewTransition
+            name={active ? `cover-${active}` : "project-preview"}
+            share="morph"
+            default="none"
           >
-            {projects.map((p) => (
-              <Image
-                key={p.slug}
-                src={p.cover}
-                alt=""
-                sizes="300px"
-                placeholder="blur"
-                priority
-                data-active={active === p.slug}
-              />
-            ))}
-          </div>,
+            <div
+              ref={previewRef}
+              className="preview"
+              data-show={active !== null}
+              aria-hidden
+              style={{ aspectRatio: "4 / 3" }}
+            >
+              {projects.map((p) => (
+                <Image
+                  key={p.slug}
+                  src={p.cover}
+                  alt=""
+                  sizes="300px"
+                  placeholder="blur"
+                  priority
+                  data-active={active === p.slug}
+                />
+              ))}
+            </div>
+          </ViewTransition>,
           document.body,
         )}
     </>
