@@ -33,14 +33,14 @@ export default async function ProjectPage({ params }: Params) {
   const next = projects[(index + 1) % projects.length];
 
   return (
-    <main className="page">
-      <Link href="/" className="back" data-animate style={delay(0)}>
-        <span>←</span> Index
+    <main>
+      <Link href="/projects" className="back" data-animate style={delay(0)}>
+        <span>←</span> Projects
       </Link>
 
       <header data-animate style={delay(1)}>
         <h1 className="title">{project.title}</h1>
-        <p className="item-desc">{project.tagline}</p>
+        <p className="row-desc">{project.tagline}</p>
       </header>
 
       <dl className="meta" data-animate style={delay(2)}>

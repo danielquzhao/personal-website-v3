@@ -59,7 +59,7 @@ export type Project = {
 
 const an: Person = { name: "An Tran", href: "https://www.antran.dev/" };
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
     slug: "terra",
     title: "Terra",
@@ -275,3 +275,6 @@ end`,
     ],
   },
 ];
+
+// Newest first.
+export const projects = projectList.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));

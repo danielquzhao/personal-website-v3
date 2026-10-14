@@ -1,16 +1,14 @@
-import { ProjectList } from "@/components/project-list";
+import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { experience, projects, site } from "@/content/data";
+import { experience, site } from "@/content/data";
 
-export default function Home() {
+const delay = (i: number) => ({ "--i": i }) as React.CSSProperties;
+
+export default function About() {
   return (
-    <main className="page">
-      <header data-animate style={{ "--i": 0 } as React.CSSProperties}>
-        <h1 className="name">{site.name}</h1>
-      </header>
-
-      <div className="stack" style={{ marginTop: 32 }}>
-        <p data-animate style={{ "--i": 1 } as React.CSSProperties}>
+    <main>
+      <div className="stack">
+        <p data-animate style={delay(0)}>
           <em>Building interactive things.</em> I study Computer Science at the University of
           Waterloo, and I&apos;m currently a software engineer intern at{" "}
           <a href="https://www.faire.com/" target="_blank" rel="noreferrer">
@@ -18,44 +16,31 @@ export default function Home() {
           </a>
           .
         </p>
-        <p data-animate style={{ "--i": 2 } as React.CSSProperties}>
+        <p data-animate style={delay(1)}>
           I&apos;m drawn to human-centered design and technology that brings experiences to
-          life: augmented reality, music, and the interfaces in between. Away from the keyboard
-          I&apos;m usually running, climbing, or making music.
+          life: augmented reality, music, and the interfaces in between. Have a look at{" "}
+          <Link href="/projects">what I&apos;ve built</Link>. Away from the keyboard I&apos;m
+          usually running, climbing, or making music.
         </p>
       </div>
 
-      <section className="columns">
-        <div data-animate style={{ "--i": 3 } as React.CSSProperties}>
-          <h2 className="label">Projects</h2>
-          <ProjectList
-            projects={projects.map(({ slug, title, tagline, cover }) => ({
-              slug,
-              title,
-              tagline,
-              cover,
-            }))}
-          />
-        </div>
-
-        <div data-animate style={{ "--i": 4 } as React.CSSProperties}>
-          <h2 className="label">Experience</h2>
-          <ul className="list">
-            {experience.map((job) => (
-              <li key={job.company}>
-                <a href={job.href} target="_blank" rel="noreferrer" className="item-title">
-                  {job.company}
-                </a>
-                <span className="item-desc">{job.role}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section data-animate style={delay(2)}>
+        <h2 className="label">Experience</h2>
+        <ul className="rows">
+          {experience.map((job) => (
+            <li key={job.company}>
+              <a href={job.href} target="_blank" rel="noreferrer" className="row">
+                <span className="row-title">{job.company}</span>
+                <span className="row-meta">{job.role}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section data-animate style={{ "--i": 5 } as React.CSSProperties}>
+      <section data-animate style={delay(3)}>
         <h2 className="label">Connect</h2>
-        <p style={{ marginTop: 16 }}>
+        <p style={{ marginTop: 12 }}>
           Say hi at <a href={`mailto:${site.email}`}>{site.email}</a>, or find me on{" "}
           <a href={site.github} target="_blank" rel="noreferrer">
             GitHub
@@ -68,7 +53,7 @@ export default function Home() {
         </p>
       </section>
 
-      <Footer index={6} />
+      <Footer index={4} />
     </main>
   );
 }

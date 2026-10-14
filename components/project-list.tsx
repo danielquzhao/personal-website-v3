@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Project } from "@/content/data";
 
-type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover">[] };
+type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover" | "date">[] };
 
 // A screenshot that trails the cursor while hovering a project link.
 // Position is eased toward the pointer each frame, with a slight tilt from horizontal velocity.
@@ -75,17 +75,20 @@ export function ProjectList({ projects }: Props) {
 
   return (
     <>
-      <ul className="list" onPointerLeave={() => setActive(null)}>
+      <ul className="rows" onPointerLeave={() => setActive(null)}>
         {projects.map((p) => (
           <li key={p.slug}>
             <Link
               href={`/projects/${p.slug}`}
-              className="item-title"
+              className="row"
               onPointerEnter={() => setActive(p.slug)}
             >
-              {p.title}
+              <span className="row-main">
+                <span className="row-title">{p.title}</span>
+                <span className="row-desc">{p.tagline}</span>
+              </span>
+              <span className="row-meta">{p.date}</span>
             </Link>
-            <span className="item-desc">{p.tagline}</span>
           </li>
         ))}
       </ul>
