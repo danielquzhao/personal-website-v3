@@ -45,7 +45,6 @@ export default function Home() {
               <li key={job.company}>
                 <a href={job.href} target="_blank" rel="noreferrer" className="item-title">
                   {job.company}
-                  {job.current && <span className="dot" aria-label="Current" />}
                 </a>
                 <span className="item-desc">{job.role}</span>
               </li>

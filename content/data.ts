@@ -16,7 +16,7 @@ import chordcraftSaved from "@/assets/projects/image-20260112-033602.png";
 export const site = {
   name: "Daniel Zhao",
   url: "https://www.danielquzhao.com",
-  email: "danielquzhao@gmail.com",
+  email: "d86zhao@uwaterloo.ca",
   github: "https://github.com/danielquzhao",
   linkedin: "https://linkedin.com/in/danielquzhao",
   webring: "https://cs.uwatering.com/#https://www.danielquzhao.com",
@@ -26,11 +26,10 @@ export type Experience = {
   company: string;
   role: string;
   href: string;
-  current?: boolean;
 };
 
 export const experience: Experience[] = [
-  { company: "Faire", role: "Software Engineer Intern", href: "https://www.faire.com/", current: true },
+  { company: "Faire", role: "Software Engineer Intern", href: "https://www.faire.com/" },
   { company: "Cineplex Digital Media", role: "Software Engineer Intern", href: "https://www.cdmexperiences.com/" },
   { company: "Waterloo Aerial Robotics", role: "Software Developer", href: "https://www.uwarg.com/" },
   { company: "Waterloo Reality Labs", role: "Software Developer", href: "https://uwrealitylabs.com/" },
