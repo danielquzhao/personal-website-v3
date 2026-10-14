@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { Footer } from "@/components/footer";
+import { Page } from "@/components/page";
 import { ZoomImage } from "@/components/zoom-image";
 import { projects, type Block } from "@/content/data";
 
@@ -34,7 +35,7 @@ export default async function ProjectPage({ params }: Params) {
   const next = projects[(index + 1) % projects.length];
 
   return (
-    <main>
+    <Page>
       <Link href="/projects" className="back" data-animate style={delay(0)}>
         <span>←</span> Projects
       </Link>
@@ -90,7 +91,7 @@ export default async function ProjectPage({ params }: Params) {
       </nav>
 
       <Footer index={6} />
-    </main>
+    </Page>
   );
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Page } from "@/components/page";
 import { formatDate, getPosts } from "@/lib/writing";
 
 export const metadata: Metadata = { title: "Writing" };
@@ -9,7 +10,7 @@ export default function Writing() {
   const posts = getPosts();
 
   return (
-    <main>
+    <Page>
       <p className="intro" data-animate style={{ "--i": 0 } as React.CSSProperties}>
         Notes on things I&apos;m building and learning.
       </p>
@@ -36,6 +37,6 @@ export default function Writing() {
         )}
       </div>
       <Footer index={2} />
-    </main>
+    </Page>
   );
 }

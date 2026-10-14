@@ -917,9 +917,29 @@ a:hover .arrow {
   }
 }
 
-/* Arriving via the morph, the cover is already in place, so skip its fade-in. */
-:root[data-morph] .cover[data-animate] {
+/* Page navigation: the old page fades out quickly; the new one shows live with its own stagger. */
+::view-transition-old(.page-out) {
+  animation: page-out 0.18s ease-out both;
+}
+
+::view-transition-new(.page-in) {
   animation: none;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Arriving via the morph, the cover is already in place, so its fade-in starts finished.
+   (A negative delay rather than `animation: none`, which would replay the fade when the flag is cleared.) */
+:root[data-morph] .cover[data-animate] {
+  animation-delay: -1s;
+}
+
+:root[data-morph] .cover img {
+  background-image: none !important;
 }
 
 /* Theme switch cross-fade */

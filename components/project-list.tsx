@@ -9,7 +9,7 @@ import type { Project } from "@/content/data";
 function markMorph() {
   const root = document.documentElement;
   root.dataset.morph = "";
-  window.setTimeout(() => delete root.dataset.morph, 1200);
+  window.setTimeout(() => delete root.dataset.morph, 2000);
 }
 
 type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover" | "date">[] };
@@ -123,7 +123,8 @@ export function ProjectList({ projects }: Props) {
                   key={p.slug}
                   src={p.cover}
                   alt=""
-                  sizes="300px"
+                  // Same sizes as the project page cover, so the morph lands on an already-loaded image.
+                  sizes="(max-width: 640px) 100vw, 640px"
                   placeholder="blur"
                   priority
                   data-active={active === p.slug}

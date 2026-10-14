@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
+import { Page } from "@/components/page";
 import { formatDate, getPost, getPosts } from "@/lib/writing";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -27,7 +28,7 @@ export default async function PostPage({ params }: Params) {
   if (!post) notFound();
 
   return (
-    <main>
+    <Page>
       <Link href="/writing" className="back" data-animate style={delay(0)}>
         <span>←</span> Writing
       </Link>
@@ -45,6 +46,6 @@ export default async function PostPage({ params }: Params) {
       />
 
       <Footer index={3} />
-    </main>
+    </Page>
   );
 }

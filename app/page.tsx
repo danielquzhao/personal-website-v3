@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Page } from "@/components/page";
 import { experience, site } from "@/content/data";
 
 const delay = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 export default function About() {
   return (
-    <main>
+    <Page>
       <div className="stack">
         <p data-animate style={delay(0)}>
           <em>Building interactive things.</em> I study Computer Science at the University of
@@ -78,6 +79,6 @@ export default function About() {
       </section>
 
       <Footer index={4} />
-    </main>
+    </Page>
   );
 }
