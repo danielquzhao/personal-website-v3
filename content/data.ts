@@ -35,6 +35,8 @@ export type Experience = {
   tint: string;
   // Logo box size in px inside its tile, for logos that look too big or small at the default.
   logoSize?: number;
+  // Optional wide image revealed behind the row on hover; falls back to a glow in `tint`.
+  banner?: StaticImageData;
 };
 
 export const experience: Experience[] = [

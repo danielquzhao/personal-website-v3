@@ -30,7 +30,20 @@ export default function About() {
         <ul className="rows">
           {experience.map((job) => (
             <li key={job.company}>
-              <a href={job.href} target="_blank" rel="noreferrer" className="row">
+              <a
+                href={job.href}
+                target="_blank"
+                rel="noreferrer"
+                className="row row-banner-host"
+                style={{ "--tint": job.tint } as React.CSSProperties}
+              >
+                <span className="row-banner" aria-hidden>
+                  {job.banner ? (
+                    <Image src={job.banner} alt="" fill sizes="400px" className="row-banner-image" />
+                  ) : (
+                    <Image src={job.logo} alt="" sizes="160px" className="row-banner-mark" />
+                  )}
+                </span>
                 <span className="row-title">
                   <span className="logo" style={{ background: job.tint }}>
                     <Image
