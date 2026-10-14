@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Page } from "@/components/page";
 import { experience, site } from "@/content/data";
@@ -11,18 +10,17 @@ export default function About() {
     <Page>
       <div className="stack">
         <p data-animate style={delay(0)}>
-          <em>Building interactive things.</em> I study Computer Science at the University of
-          Waterloo, and I&apos;m currently a software engineer intern at{" "}
+          I study Computer Science at the University of Waterloo. Currently, I am a software
+          engineer intern at{" "}
           <a href="https://www.faire.com/" target="_blank" rel="noreferrer">
             Faire
           </a>
           .
         </p>
         <p data-animate style={delay(1)}>
-          I&apos;m drawn to human-centered design and technology that brings experiences to
-          life: augmented reality, music, and the interfaces in between. Have a look at{" "}
-          <Link href="/projects">what I&apos;ve built</Link>. Away from the keyboard I&apos;m
-          usually running, climbing, or making music.
+          I am passionate about interactive systems, human-centered design, and technology that
+          brings experiences to life. In my free time, I enjoy running, climbing, and creating
+          music.
         </p>
       </div>
 
