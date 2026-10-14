@@ -12,6 +12,10 @@ import motionwaveLandmarks from "@/assets/projects/image-20260112-031146.png";
 import chordcraft from "@/assets/projects/chordcraft.png";
 import chordcraftDashboard from "@/assets/projects/image-20260112-033518.png";
 import chordcraftSaved from "@/assets/projects/image-20260112-033602.png";
+import faireLogo from "@/assets/logos/faire.png";
+import cineplexLogo from "@/assets/logos/cineplex.png";
+import wargLogo from "@/assets/logos/warg.png";
+import wrlLogo from "@/assets/logos/wrl.png";
 
 export const site = {
   name: "Daniel Zhao",
@@ -26,13 +30,44 @@ export type Experience = {
   company: string;
   role: string;
   href: string;
+  logo: StaticImageData;
+  // Tile color behind the logo, matching each brand.
+  tint: string;
+  // Logo box size in px inside its tile, for logos that look too big or small at the default.
+  logoSize?: number;
 };
 
 export const experience: Experience[] = [
-  { company: "Faire", role: "Software Engineer Intern", href: "https://www.faire.com/" },
-  { company: "Cineplex Digital Media", role: "Software Engineer Intern", href: "https://www.cdmexperiences.com/" },
-  { company: "Waterloo Aerial Robotics", role: "Software Developer", href: "https://www.uwarg.com/" },
-  { company: "Waterloo Reality Labs", role: "Software Developer", href: "https://uwrealitylabs.com/" },
+  {
+    company: "Faire",
+    role: "Software Engineer Intern",
+    href: "https://www.faire.com/",
+    logo: faireLogo,
+    tint: "#333333",
+    logoSize: 11,
+  },
+  {
+    company: "Cineplex Digital Media",
+    role: "Software Engineer Intern",
+    href: "https://www.cdmexperiences.com/",
+    logo: cineplexLogo,
+    tint: "#004ccd",
+    logoSize: 14,
+  },
+  {
+    company: "Waterloo Aerial Robotics",
+    role: "Software Developer",
+    href: "https://www.uwarg.com/",
+    logo: wargLogo,
+    tint: "#e5e7eb",
+  },
+  {
+    company: "Waterloo Reality Labs",
+    role: "Software Developer",
+    href: "https://uwrealitylabs.com/",
+    logo: wrlLogo,
+    tint: "#f5f2e8",
+  },
 ];
 
 type Person = { name: string; href: string };

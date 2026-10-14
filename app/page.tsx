@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { experience, site } from "@/content/data";
@@ -30,7 +31,17 @@ export default function About() {
           {experience.map((job) => (
             <li key={job.company}>
               <a href={job.href} target="_blank" rel="noreferrer" className="row">
-                <span className="row-title">{job.company}</span>
+                <span className="row-title">
+                  <span className="logo" style={{ background: job.tint }}>
+                    <Image
+                      src={job.logo}
+                      alt=""
+                      sizes="20px"
+                      style={job.logoSize ? { width: job.logoSize, height: job.logoSize } : undefined}
+                    />
+                  </span>
+                  {job.company}
+                </span>
                 <span className="row-meta">{job.role}</span>
               </a>
             </li>
