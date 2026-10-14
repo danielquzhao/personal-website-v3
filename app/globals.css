@@ -439,6 +439,20 @@ a:hover .arrow {
   color: var(--fg);
 }
 
+.place {
+  display: inline-flex;
+  align-items: center;
+}
+
+.local-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+  font-variant-numeric: tabular-nums;
+  animation: fade-in 0.4s ease;
+}
+
 .webring {
   display: inline-flex;
   align-items: center;
