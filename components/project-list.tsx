@@ -12,7 +12,7 @@ function markMorph() {
   window.setTimeout(() => delete root.dataset.morph, 2000);
 }
 
-type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover" | "date">[] };
+type Props = { projects: Pick<Project, "slug" | "title" | "tagline" | "cover">[] };
 
 // A screenshot that trails the cursor while hovering a project link.
 // Position is eased toward the pointer each frame, with a slight tilt from horizontal velocity.
@@ -97,7 +97,6 @@ export function ProjectList({ projects }: Props) {
                 <span className="row-title">{p.title}</span>
                 <span className="row-desc">{p.tagline}</span>
               </span>
-              <span className="row-meta">{p.date}</span>
             </Link>
           </li>
         ))}

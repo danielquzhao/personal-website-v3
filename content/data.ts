@@ -87,6 +87,7 @@ export type Project = {
   title: string;
   tagline: string;
   cover: StaticImageData;
+  // Not shown on the site; only used to order projects newest first.
   date: string;
   event?: string;
   stack: string[];

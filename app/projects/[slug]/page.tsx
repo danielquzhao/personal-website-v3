@@ -46,10 +46,12 @@ export default async function ProjectPage({ params }: Params) {
       </header>
 
       <dl className="meta" data-animate style={delay(2)}>
-        <div>
-          <dt>{project.event ? "Event" : "Date"}</dt>
-          <dd>{project.event ? `${project.event}, ${project.date}` : project.date}</dd>
-        </div>
+        {project.event && (
+          <div>
+            <dt>Event</dt>
+            <dd>{project.event}</dd>
+          </div>
+        )}
         <div>
           <dt>Links</dt>
           <dd>

@@ -10,16 +10,15 @@ export default function Projects() {
   return (
     <Page>
       <p className="intro" data-animate style={{ "--i": 0 } as React.CSSProperties}>
-        Things I&apos;ve built, mostly at hackathons and on weekends.
+        A few things I&apos;ve built.
       </p>
       <div data-animate style={{ "--i": 1 } as React.CSSProperties}>
         <ProjectList
-          projects={projects.map(({ slug, title, tagline, cover, date }) => ({
+          projects={projects.map(({ slug, title, tagline, cover }) => ({
             slug,
             title,
             tagline,
             cover,
-            date,
           }))}
         />
       </div>
