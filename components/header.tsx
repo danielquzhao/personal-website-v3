@@ -4,7 +4,7 @@ import { Command } from "cmdk";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { getTheme, setTheme, type Theme } from "@/lib/theme";
+import { getTheme, toggleTheme, type Theme } from "@/lib/theme";
 import {
   BoxIcon,
   CheckIcon,
@@ -14,7 +14,6 @@ import {
   FolderIcon,
   HomeIcon,
   MailIcon,
-  MonitorIcon,
   MoonIcon,
   PenIcon,
   SearchIcon,
@@ -44,7 +43,7 @@ export function Header({ site, projects, posts }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [theme, setThemeState] = useState<Theme>("system");
+  const [theme, setThemeState] = useState<Theme>("dark");
   const [copied, setCopied] = useState(false);
   const [isMac, setIsMac] = useState(true);
   const [hovered, setHovered] = useState<string | null>(null);
@@ -81,10 +80,7 @@ export function Header({ site, projects, posts }: Props) {
 
   const go = (href: string) => run(() => router.push(href));
   const visit = (href: string) => run(() => window.open(href, "_blank", "noopener,noreferrer"));
-  const pickTheme = (t: Theme) => {
-    setTheme(t);
-    setThemeState(t);
-  };
+  const switchTheme = () => run(() => setThemeState(toggleTheme()));
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -241,19 +237,14 @@ export function Header({ site, projects, posts }: Props) {
           </Command.Group>
 
           <Command.Group heading="Theme">
-            {(
-              [
-                ["light", "Light", SunIcon],
-                ["dark", "Dark", MoonIcon],
-                ["system", "System", MonitorIcon],
-              ] as const
-            ).map(([t, label, ThemeIcon]) => (
-              <Command.Item key={t} value={`Theme ${label}`} onSelect={() => pickTheme(t)}>
-                <ThemeIcon />
-                {label}
-                {theme === t && <CheckIcon className="cmdk-check" />}
-              </Command.Item>
-            ))}
+            <Command.Item
+              value="Toggle theme"
+              keywords={["dark", "light", "mode", "appearance"]}
+              onSelect={switchTheme}
+            >
+              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+              Switch to {theme === "dark" ? "light" : "dark"} theme
+            </Command.Item>
           </Command.Group>
         </Command.List>
       </Command.Dialog>

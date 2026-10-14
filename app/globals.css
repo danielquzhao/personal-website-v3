@@ -1,29 +1,4 @@
 :root {
-  --bg: #f3f3f0;
-  --fg: #1b1b1a;
-  --body: #3a3a38;
-  --muted: #7d7d79;
-  --faint: #dfdfdb;
-  --surface: #e9e9e5;
-  --accent: #2f9e5b;
-  --radius: 10px;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #151515;
-    --fg: #eeeeec;
-    --body: #c9c9c6;
-    --muted: #8a8a86;
-    --faint: #2a2a29;
-    --surface: #1d1d1c;
-    --accent: #4cc47b;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
   --bg: #151515;
   --fg: #eeeeec;
   --body: #c9c9c6;
@@ -31,7 +6,19 @@
   --faint: #2a2a29;
   --surface: #1d1d1c;
   --accent: #4cc47b;
+  --radius: 10px;
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f3f0;
+  --fg: #1b1b1a;
+  --body: #3a3a38;
+  --muted: #7d7d79;
+  --faint: #dfdfdb;
+  --surface: #e9e9e5;
+  --accent: #2f9e5b;
+  color-scheme: light;
 }
 
 *,
@@ -472,12 +459,6 @@ a:hover .arrow {
 
 :root[data-theme="light"] .webring img {
   filter: invert(1);
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .webring img {
-    filter: invert(1);
-  }
 }
 
 /* ---------- Cursor preview ---------- */

@@ -91,13 +91,6 @@ export const MoonIcon = (p: Props) => (
   </Icon>
 );
 
-export const MonitorIcon = (p: Props) => (
-  <Icon {...p}>
-    <rect x="3" y="4" width="18" height="12" rx="2" />
-    <path d="M8 20h8M12 16v4" />
-  </Icon>
-);
-
 export const SearchIcon = (p: Props) => (
   <Icon {...p}>
     <circle cx="11" cy="11" r="7" />
