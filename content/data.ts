@@ -14,6 +14,8 @@ import chordcraft from "@/assets/projects/chordcraft.png";
 import algonquin from "@/assets/photos/algonquin.jpg";
 import beach from "@/assets/photos/beach.jpg";
 import courtyard from "@/assets/photos/courtyard.jpg";
+import kauai from "@/assets/photos/kauai.jpg";
+import montBlanc from "@/assets/photos/mont-blanc.jpg";
 import rainbow from "@/assets/photos/rainbow.jpg";
 import triathlon from "@/assets/photos/triathlon.jpg";
 import faireLogo from "@/assets/logos/faire.png";
@@ -36,19 +38,33 @@ export const photos: Photo[] = [
   {
     src: courtyard,
     alt: "A garden courtyard in front of a glass-fronted house in Liaoning, China, with the low sun through the trees",
-    caption: "My hometown in Liaoning, China",
+    caption: "Liaoning, China",
   },
   {
     src: beach,
     alt: "Waves on a sandy beach in Da Nang, Vietnam, at golden hour, with hazy mountains in the distance",
-    caption: "My girlfriend's hometown in Da Nang, Vietnam",
+    caption: "Da Nang, Vietnam",
   },
   {
     src: triathlon,
-    alt: "Daniel walking through the finish arch at the Great White North Triathlon in Stony Plain",
-    caption: "Finishing the Great White North Triathlon",
+    alt: "Daniel running through the finish arch at the Great White North Triathlon in Stony Plain",
+    caption: "The Great White North Triathlon",
     // Portrait photo: keep the FINISH banner and Daniel in the wide frame.
-    position: "50% 42%",
+    position: "50% 48%",
+  },
+  {
+    src: kauai,
+    alt: "Green ridges and cliffs of the Nā Pali coast dropping to the ocean in Kauai, Hawaii",
+    caption: "Kauai, Hawaii",
+    // Wide photo: shift right a little to keep the ocean in frame.
+    position: "60% 50%",
+  },
+  {
+    src: montBlanc,
+    alt: "An alpine lake at dusk, with a mountain silhouetted between the valley slopes and a rowboat in the foreground",
+    caption: "Tour du Mont Blanc",
+    // Trim empty sky rather than the rowboat.
+    position: "50% 80%",
   },
   {
     src: rainbow,
@@ -59,7 +75,7 @@ export const photos: Photo[] = [
   {
     src: algonquin,
     alt: "Daniel and another hiker on a lookout in Algonquin Park, over a lake and autumn forest at sunset",
-    caption: "Hiking in Algonquin Park",
+    caption: "Algonquin Park",
     position: "50% 60%",
   },
 ];
