@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { Page } from "@/components/page";
-import { experience, site } from "@/content/data";
+import { PhotoCarousel } from "@/components/photo-carousel";
+import { experience, photos, site } from "@/content/data";
 
 const delay = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
@@ -61,7 +62,13 @@ export default function About() {
         </ul>
       </section>
 
-      <section data-animate style={delay(3)}>
+      {photos.length > 0 && (
+        <section data-animate style={delay(3)}>
+          <PhotoCarousel photos={photos} />
+        </section>
+      )}
+
+      <section data-animate style={delay(4)}>
         <h2 className="label">Connect</h2>
         <p style={{ marginTop: 12 }}>
           Say hi at <a href={`mailto:${site.email}`}>{site.email}</a>, or find me on{" "}
@@ -76,7 +83,7 @@ export default function About() {
         </p>
       </section>
 
-      <Footer index={4} />
+      <Footer index={5} />
     </Page>
   );
 }

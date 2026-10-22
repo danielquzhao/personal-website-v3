@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import type { Photo } from "@/components/photo-carousel";
 
 import terra from "@/assets/projects/terra.png";
 import terra1 from "@/assets/projects/image-20260112-015711.png";
@@ -10,6 +11,11 @@ import notationCode from "@/assets/projects/image-20260112-024013.png";
 import motionwave from "@/assets/projects/motionwave.png";
 import motionwaveLandmarks from "@/assets/projects/image-20260112-031146.png";
 import chordcraft from "@/assets/projects/chordcraft.png";
+import algonquin from "@/assets/photos/algonquin.jpg";
+import beach from "@/assets/photos/beach.jpg";
+import courtyard from "@/assets/photos/courtyard.jpg";
+import rainbow from "@/assets/photos/rainbow.jpg";
+import triathlon from "@/assets/photos/triathlon.jpg";
 import faireLogo from "@/assets/logos/faire.png";
 import cineplexLogo from "@/assets/logos/cineplex.png";
 import wargLogo from "@/assets/logos/warg.png";
@@ -23,6 +29,40 @@ export const site = {
   linkedin: "https://linkedin.com/in/danielquzhao",
   webring: "https://cs.uwatering.com/#https://www.danielquzhao.com",
 };
+
+// Home page photo carousel, between the intro and Experience. Put images in assets/photos/,
+// import them above, and list them here in order. The carousel hides itself while this is empty.
+export const photos: Photo[] = [
+  {
+    src: courtyard,
+    alt: "A garden courtyard in front of a glass-fronted house in Liaoning, China, with the low sun through the trees",
+    caption: "My hometown in Liaoning, China",
+  },
+  {
+    src: beach,
+    alt: "Waves on a sandy beach in Da Nang, Vietnam, at golden hour, with hazy mountains in the distance",
+    caption: "My girlfriend's hometown in Da Nang, Vietnam",
+  },
+  {
+    src: triathlon,
+    alt: "Daniel walking through the finish arch at the Great White North Triathlon in Stony Plain",
+    caption: "Finishing the Great White North Triathlon",
+    // Portrait photo: keep the FINISH banner and Daniel in the wide frame.
+    position: "50% 42%",
+  },
+  {
+    src: rainbow,
+    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
+    caption: "A beautiful rainbow",
+    position: "50% 65%",
+  },
+  {
+    src: algonquin,
+    alt: "Daniel and another hiker on a lookout in Algonquin Park, over a lake and autumn forest at sunset",
+    caption: "Hiking in Algonquin Park",
+    position: "50% 60%",
+  },
+];
 
 export type Experience = {
   company: string;

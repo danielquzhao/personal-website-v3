@@ -466,6 +466,133 @@ a:hover .arrow {
   opacity: 1;
 }
 
+/* ---------- Photo carousel ---------- */
+
+.carousel {
+  margin: 0;
+  outline: none;
+}
+
+.carousel-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--fg) 7%, transparent);
+}
+
+.carousel:focus-visible .carousel-frame {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.carousel-photo {
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity 0.6s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-photo[data-active="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.carousel-arrow[data-side="left"] {
+  left: 12px;
+}
+
+.carousel-arrow[data-side="right"] {
+  right: 12px;
+}
+
+.carousel-arrow:hover {
+  background: rgba(20, 20, 20, 0.65);
+}
+
+.carousel:hover .carousel-arrow,
+.carousel-arrow:focus-visible {
+  opacity: 1;
+}
+
+.carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 20px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.carousel-caption {
+  animation: fade-in 0.4s ease;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.carousel-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--fg) 22%, transparent);
+  cursor: pointer;
+  transition:
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease;
+}
+
+.carousel-dots button[data-active="true"] {
+  width: 16px;
+  background: color-mix(in srgb, var(--fg) 60%, transparent);
+}
+
+@media (hover: none) {
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-photo,
+  .carousel-dots button {
+    transition: none;
+  }
+}
+
 /* ---------- Project page ---------- */
 
 .back {
