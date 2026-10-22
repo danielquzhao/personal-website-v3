@@ -41,15 +41,16 @@ export const photos: Photo[] = [
     caption: "Liaoning, China",
   },
   {
-    src: rainbow,
-    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
-    caption: "A beautiful rainbow",
-    position: "50% 65%",
-  },
-  {
     src: beach,
     alt: "Waves on a sandy beach in Da Nang, Vietnam, at golden hour, with hazy mountains in the distance",
     caption: "Da Nang, Vietnam",
+  },
+  {
+    src: triathlon,
+    alt: "Daniel running through the finish arch at the Great White North Triathlon in Stony Plain",
+    caption: "The Great White North Triathlon",
+    // Portrait photo: keep the FINISH banner and Daniel in the wide frame.
+    position: "50% 48%",
   },
   {
     src: elkIsland,
@@ -59,11 +60,10 @@ export const photos: Photo[] = [
     position: "50% 46%",
   },
   {
-    src: triathlon,
-    alt: "Daniel running through the finish arch at the Great White North Triathlon in Stony Plain",
-    caption: "The Great White North Triathlon",
-    // Portrait photo: keep the FINISH banner and Daniel in the wide frame.
-    position: "50% 48%",
+    src: rainbow,
+    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
+    caption: "A beautiful rainbow",
+    position: "50% 65%",
   },
   {
     src: montBlanc,
