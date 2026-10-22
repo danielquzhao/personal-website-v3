@@ -32,19 +32,6 @@ export const FolderIcon = (p: Props) => (
   </Icon>
 );
 
-export const PenIcon = (p: Props) => (
-  <Icon {...p}>
-    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z" />
-  </Icon>
-);
-
-export const FileIcon = (p: Props) => (
-  <Icon {...p}>
-    <path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z" />
-    <path d="M14 3v5h5M9 13h6M9 17h4" />
-  </Icon>
-);
-
 export const BoxIcon = (p: Props) => (
   <Icon {...p}>
     <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z" />

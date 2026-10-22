@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import { Header } from "@/components/header";
 import { projects, site } from "@/content/data";
-import { getPosts } from "@/lib/writing";
 import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -37,7 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header
             site={site}
             projects={projects.map(({ slug, title }) => ({ slug, title }))}
-            posts={getPosts().map(({ slug, title }) => ({ slug, title }))}
           />
           {children}
         </div>

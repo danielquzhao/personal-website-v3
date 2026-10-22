@@ -190,11 +190,6 @@ kbd {
   color: var(--muted);
 }
 
-.empty {
-  margin-top: 24px;
-  color: var(--muted);
-}
-
 .label {
   font-size: 13px;
   font-weight: 400;
@@ -363,15 +358,6 @@ section {
   font-size: 13px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
-}
-
-.badge {
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--faint);
-  font-size: 11px;
-  color: var(--muted);
 }
 
 .arrow {
@@ -576,8 +562,7 @@ a:hover .arrow {
   color: var(--muted);
 }
 
-.code,
-.prose pre {
+.code {
   position: relative;
   padding: 18px 20px;
   border-radius: var(--radius);
@@ -622,33 +607,6 @@ a:hover .arrow {
 }
 
 .next a:hover {
-  color: var(--fg);
-}
-
-.prose ul,
-.prose ol {
-  margin: 16px 0;
-  padding-left: 20px;
-}
-
-.prose li + li {
-  margin-top: 6px;
-}
-
-.prose blockquote {
-  margin: 24px 0;
-  padding-left: 16px;
-  border-left: 2px solid var(--faint);
-  color: var(--muted);
-}
-
-.prose :not(pre) > code {
-  padding: 2px 5px;
-  border-radius: 5px;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--faint);
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 0.86em;
   color: var(--fg);
 }
 

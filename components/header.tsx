@@ -10,12 +10,10 @@ import {
   CheckIcon,
   CopyIcon,
   ExternalIcon,
-  FileIcon,
   FolderIcon,
   HomeIcon,
   MailIcon,
   MoonIcon,
-  PenIcon,
   SearchIcon,
   SunIcon,
 } from "./icons";
@@ -25,13 +23,11 @@ type Entry = { slug: string; title: string };
 type Props = {
   site: { email: string; github: string; linkedin: string };
   projects: Entry[];
-  posts: Entry[];
 };
 
 const pages = [
   { href: "/", label: "About", key: "H", icon: HomeIcon },
   { href: "/projects", label: "Projects", key: "P", icon: FolderIcon },
-  { href: "/writing", label: "Writing", key: "W", icon: PenIcon },
 ];
 
 function isTyping(target: EventTarget | null) {
@@ -39,7 +35,7 @@ function isTyping(target: EventTarget | null) {
   return !!el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
 }
 
-export function Header({ site, projects, posts }: Props) {
+export function Header({ site, projects }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -154,21 +150,6 @@ export function Header({ site, projects, posts }: Props) {
               </Command.Item>
             ))}
           </Command.Group>
-
-          {posts.length > 0 && (
-            <Command.Group heading="Writing">
-              {posts.map((p) => (
-                <Command.Item
-                  key={p.slug}
-                  value={`Writing ${p.title}`}
-                  onSelect={() => go(`/writing/${p.slug}`)}
-                >
-                  <FileIcon />
-                  {p.title}
-                </Command.Item>
-              ))}
-            </Command.Group>
-          )}
 
           <Command.Group heading="Links">
             <Command.Item value="GitHub" onSelect={() => visit(site.github)}>
