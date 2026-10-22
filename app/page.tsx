@@ -10,7 +10,7 @@ export default function About() {
     <Page>
       <div className="stack">
         <p data-animate style={delay(0)}>
-          I study Computer Science at the University of Waterloo. Currently, I am a software
+          I study Computer Science at the University of Waterloo. Previously, I was a software
           engineer intern at{" "}
           <a href="https://www.faire.com/" target="_blank" rel="noreferrer">
             Faire
