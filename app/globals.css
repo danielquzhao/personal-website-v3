@@ -108,7 +108,7 @@ em,
 .shell {
   max-width: 640px;
   margin: 0 auto;
-  padding: clamp(64px, 14vh, 128px) 24px 96px;
+  padding: clamp(48px, 11vh, 104px) 24px 96px;
 }
 
 .header {
@@ -208,6 +208,11 @@ section {
 /* The first section reads as a continuation of the intro, so it sits closer. */
 .stack + section {
   margin-top: 36px;
+}
+
+/* Connect follows the photos closely, as a sign-off. */
+section:has(.carousel) + section {
+  margin-top: 40px;
 }
 
 /* ---------- Enter animation ---------- */
@@ -381,7 +386,7 @@ a:hover .arrow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 56px;
   padding-top: 24px;
   border-top: 1px solid var(--faint);
   font-size: 13px;
