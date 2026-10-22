@@ -10,8 +10,6 @@ import notationCode from "@/assets/projects/image-20260112-024013.png";
 import motionwave from "@/assets/projects/motionwave.png";
 import motionwaveLandmarks from "@/assets/projects/image-20260112-031146.png";
 import chordcraft from "@/assets/projects/chordcraft.png";
-import chordcraftDashboard from "@/assets/projects/image-20260112-033518.png";
-import chordcraftSaved from "@/assets/projects/image-20260112-033602.png";
 import faireLogo from "@/assets/logos/faire.png";
 import cineplexLogo from "@/assets/logos/cineplex.png";
 import wargLogo from "@/assets/logos/warg.png";
@@ -261,54 +259,59 @@ end`,
   {
     slug: "chordcraft",
     title: "ChordCraft",
-    tagline: "Real-time piano to sheet music converter",
+    tagline: "Piano score editor with an AI composing partner",
     cover: chordcraft,
-    date: "January 2025",
-    event: "GeeseHacks",
-    stack: ["React", "Node.js", "Express", "MongoDB", "ABCJS"],
+    date: "August 2026",
+    stack: [
+      "React",
+      "TypeScript",
+      "VexFlow",
+      "Tone.js",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "LangGraph",
+      "Claude",
+    ],
     links: [
       { label: "GitHub", href: "https://github.com/danielquzhao/chordcraft" },
-      { label: "Live demo", href: "https://chordcraft.onrender.com/" },
+      { label: "usechordcraft.vercel.app", href: "https://usechordcraft.vercel.app" },
     ],
     body: [
       { type: "h", text: "Overview" },
       {
         type: "p",
-        text: "We built ChordCraft to allow users to capture their musical ideas before they disappear. The app features a virtual keyboard that responds to keypresses with sound, and instantly converts your playing into ABC notation that renders as sheet music. Everything you create is saved to MongoDB and tied to your account with user authentication.",
+        text: "ChordCraft is a piano score editor with a composing partner, like Cursor for sheet music. Select a few bars, describe the change you want, and review the AI's edit note by note before it lands. Only the bars you picked ever change.",
       },
-      { type: "h", text: "Key features" },
+      { type: "h", text: "Editing by describing it" },
       {
         type: "p",
-        text: "ChordCraft features an interactive virtual piano that maps 17 keys to your computer keyboard, including support for chords via a 200ms debounce system. As you play, the app provides real-time sound playback and visual highlights while instantly converting your input into ABC notation.",
-      },
-      { type: "img", src: chordcraftDashboard, alt: "ChordCraft keyboard and live sheet music" },
-      {
-        type: "p",
-        text: "ABCJS is used to render dynamic sheet music as you play, with measures, clefs, and key signatures. The system also includes full CRUD operations for saving and organizing compositions, protected by user authentication.",
-      },
-      { type: "img", src: chordcraftSaved, alt: "ChordCraft saved compositions" },
-      { type: "h", text: "Backend" },
-      {
-        type: "p",
-        text: "The backend was built with Node.js and Express, utilizing MongoDB with Mongoose for flexible schema design. We implemented full CRUD functionality to manage musical compositions, where pieces are stored with their notation, titles, and descriptions. Each entry is linked to a specific user to ensure data integrity and privacy.",
+        text: "Press ⌘K on a selection, or ask in the chat panel, and the edit comes back as a diff right on the staff: drafted notes in blue, the notes they replace in dashed orange. You can listen to it, then accept or reject the whole edit. I used blue and orange instead of green and red so the diff reads for colour-blind users too. Every accepted edit becomes a version you can undo or restore.",
       },
       {
         type: "p",
-        text: "Authentication is handled with JWT tokens validated through custom middleware, which verifies tokens and attaches user information to incoming requests. The frontend communicates with this API via Axios, with error handling and loading states managed through React state.",
+        text: "Pause at the end of a phrase and it suggests the next bar, shown faintly until you press Tab. You can start from a blank page, a chord progression, or an imported MusicXML or MIDI file.",
       },
-      { type: "h", text: "Frontend" },
+      { type: "h", text: "The agent" },
       {
         type: "p",
-        text: "We built the frontend with React and Vite. The keyboard component tracks active keys, held keys, and the current ABC notation string. An AuthContext provides global authentication state, making it easy to check if a user is logged in and protect routes. Toast notifications give feedback for save operations, errors, and authentication events.",
+        text: "Edits run through a LangGraph agent on Claude. It sees the selection plus two bars of context on either side, and edits through strict tools that map one-to-one to score operations (add, remove or update a note, set a chord). Anything outside the selection is rejected, and every tool call returns precise errors the model can act on.",
       },
       {
-        type: "credits",
-        intro: "Built for GeeseHacks 2025 with",
-        people: [
-          { name: "Ivy Cho", href: "https://www.linkedin.com/in/robloxian/" },
-          { name: "Henry Hung", href: "https://www.linkedin.com/in/henry-hung-360857197/" },
-          { name: "Ryan Xiao", href: "https://www.linkedin.com/in/ryan-xiaoo/" },
-        ],
+        type: "code",
+        lang: "Agent flow",
+        code: `context → model ⇄ tools → validate ─pass─▶ proposal
+             ▲                │ fail (≤ 2 repairs)
+             └────────────────┘`,
+      },
+      {
+        type: "p",
+        text: "Before you see anything, a deterministic music checker in Python reviews the edit. Bars whose rhythm doesn't add up, or chords wider than a hand can reach, go back to the model to repair, at most twice. Out-of-range notes, parallel fifths and odd spellings are flagged as warnings alongside the proposal.",
+      },
+      { type: "h", text: "Architecture" },
+      {
+        type: "p",
+        text: "The front end is React and TypeScript, with VexFlow drawing the notation and Tone.js handling playback. Behind it, FastAPI queues each edit as a job in Redis. A worker runs the agent and publishes every step, which streams to the browser over server-sent events, so you watch the edit take shape and a dropped connection picks up where it left off. Scores, revisions and edit jobs live in PostgreSQL, with sign-in through Supabase.",
       },
     ],
   },
