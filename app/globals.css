@@ -205,6 +205,11 @@ section {
   margin-top: 56px;
 }
 
+/* The first section reads as a continuation of the intro, so it sits closer. */
+.stack + section {
+  margin-top: 36px;
+}
+
 /* ---------- Enter animation ---------- */
 
 [data-animate] {
