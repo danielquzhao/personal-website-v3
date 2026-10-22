@@ -14,7 +14,6 @@ import chordcraft from "@/assets/projects/chordcraft.png";
 import algonquin from "@/assets/photos/algonquin.jpg";
 import beach from "@/assets/photos/beach.jpg";
 import courtyard from "@/assets/photos/courtyard.jpg";
-import kauai from "@/assets/photos/kauai.jpg";
 import montBlanc from "@/assets/photos/mont-blanc.jpg";
 import rainbow from "@/assets/photos/rainbow.jpg";
 import triathlon from "@/assets/photos/triathlon.jpg";
@@ -36,6 +35,12 @@ export const site = {
 // import them above, and list them here in order. The carousel hides itself while this is empty.
 export const photos: Photo[] = [
   {
+    src: rainbow,
+    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
+    caption: "A beautiful rainbow",
+    position: "50% 65%",
+  },
+  {
     src: courtyard,
     alt: "A garden courtyard in front of a glass-fronted house in Liaoning, China, with the low sun through the trees",
     caption: "Liaoning, China",
@@ -53,24 +58,11 @@ export const photos: Photo[] = [
     position: "50% 48%",
   },
   {
-    src: kauai,
-    alt: "Green ridges and cliffs of the Nā Pali coast dropping to the ocean in Kauai, Hawaii",
-    caption: "Kauai, Hawaii",
-    // Wide photo: shift right a little to keep the ocean in frame.
-    position: "60% 50%",
-  },
-  {
     src: montBlanc,
     alt: "An alpine lake at dusk, with a mountain silhouetted between the valley slopes and a rowboat in the foreground",
     caption: "Tour du Mont Blanc",
     // Trim empty sky rather than the rowboat.
     position: "50% 80%",
-  },
-  {
-    src: rainbow,
-    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
-    caption: "A beautiful rainbow",
-    position: "50% 65%",
   },
   {
     src: algonquin,
