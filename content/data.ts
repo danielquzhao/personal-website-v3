@@ -14,6 +14,7 @@ import chordcraft from "@/assets/projects/chordcraft.png";
 import algonquin from "@/assets/photos/algonquin.jpg";
 import beach from "@/assets/photos/beach.jpg";
 import courtyard from "@/assets/photos/courtyard.jpg";
+import elkIsland from "@/assets/photos/elk-island.jpg";
 import montBlanc from "@/assets/photos/mont-blanc.jpg";
 import rainbow from "@/assets/photos/rainbow.jpg";
 import triathlon from "@/assets/photos/triathlon.jpg";
@@ -35,12 +36,6 @@ export const site = {
 // import them above, and list them here in order. The carousel hides itself while this is empty.
 export const photos: Photo[] = [
   {
-    src: rainbow,
-    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
-    caption: "A beautiful rainbow",
-    position: "50% 65%",
-  },
-  {
     src: courtyard,
     alt: "A garden courtyard in front of a glass-fronted house in Liaoning, China, with the low sun through the trees",
     caption: "Liaoning, China",
@@ -51,6 +46,12 @@ export const photos: Photo[] = [
     caption: "Da Nang, Vietnam",
   },
   {
+    src: rainbow,
+    alt: "A double rainbow over a suburban street after the rain, with someone lying on the wet road",
+    caption: "A beautiful rainbow",
+    position: "50% 65%",
+  },
+  {
     src: triathlon,
     alt: "Daniel running through the finish arch at the Great White North Triathlon in Stony Plain",
     caption: "The Great White North Triathlon",
@@ -58,11 +59,18 @@ export const photos: Photo[] = [
     position: "50% 48%",
   },
   {
+    src: elkIsland,
+    alt: "Green northern lights over a still lake in Elk Island National Park, reflected in the water behind a silhouetted island of trees",
+    caption: "Elk Island National Park",
+    // Tall photo: centre on the tree line, with the aurora above and its reflection below.
+    position: "50% 46%",
+  },
+  {
     src: montBlanc,
-    alt: "An alpine lake at dusk, with a mountain silhouetted between the valley slopes and a rowboat in the foreground",
+    alt: "A green alpine valley seen from a high pass on the Tour du Mont Blanc, with jagged peaks and a winding trail",
     caption: "Tour du Mont Blanc",
-    // Trim empty sky rather than the rowboat.
-    position: "50% 80%",
+    // Trim empty sky rather than the valley.
+    position: "50% 70%",
   },
   {
     src: algonquin,
