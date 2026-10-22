@@ -20,7 +20,7 @@ export default function About() {
         </p>
         <p data-animate style={delay(1)}>
           I am passionate about interactive systems, human-centered design, and technology that
-          brings experiences to life. In my free time, I enjoy running, climbing, and creating
+          brings experiences to life. In my free time, I enjoy running, swimming, and creating
           music.
         </p>
       </div>
