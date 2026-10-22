@@ -68,7 +68,7 @@ export const photos: Photo[] = [
   {
     src: montBlanc,
     alt: "A green alpine valley seen from a high pass on the Tour du Mont Blanc, with jagged peaks and a winding trail",
-    caption: "Tour du Mont Blanc",
+    caption: "The Tour du Mont Blanc",
     // Trim empty sky rather than the valley.
     position: "50% 70%",
   },
