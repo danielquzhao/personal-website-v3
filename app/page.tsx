@@ -29,7 +29,7 @@ export default function About() {
         <h2 className="label">Experience</h2>
         <ul className="rows">
           {experience.map((job) => (
-            <li key={job.company}>
+            <li key={`${job.company}-${job.role}`}>
               <a
                 href={job.href}
                 target="_blank"

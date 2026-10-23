@@ -19,9 +19,8 @@ import montBlanc from "@/assets/photos/mont-blanc.jpg";
 import rainbow from "@/assets/photos/rainbow.jpg";
 import triathlon from "@/assets/photos/triathlon.jpg";
 import faireLogo from "@/assets/logos/faire.png";
+import verkadaLogo from "@/assets/logos/verkada.png";
 import cineplexLogo from "@/assets/logos/cineplex.png";
-import wargLogo from "@/assets/logos/warg.png";
-import wrlLogo from "@/assets/logos/wrl.png";
 
 export const site = {
   name: "Daniel Zhao",
@@ -95,6 +94,14 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    company: "Verkada",
+    role: "Incoming Software Engineer Intern",
+    href: "https://www.verkada.com/",
+    logo: verkadaLogo,
+    tint: "#000000",
+    logoSize: 15,
+  },
+  {
     company: "Faire",
     role: "Software Engineer Intern",
     href: "https://www.faire.com/",
@@ -109,20 +116,6 @@ export const experience: Experience[] = [
     logo: cineplexLogo,
     tint: "#004ccd",
     logoSize: 14,
-  },
-  {
-    company: "Waterloo Aerial Robotics",
-    role: "Software Developer",
-    href: "https://www.uwarg.com/",
-    logo: wargLogo,
-    tint: "#e5e7eb",
-  },
-  {
-    company: "Waterloo Reality Labs",
-    role: "Software Developer",
-    href: "https://uwrealitylabs.com/",
-    logo: wrlLogo,
-    tint: "#f5f2e8",
   },
 ];
 
